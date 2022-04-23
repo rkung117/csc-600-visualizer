@@ -59,6 +59,8 @@ export const InstrumentContainer: React.FC<InstrumentContainerProps> = ({
   );
 
   const notes = state.get('notes');
+  
+  const instruments = state.get("instrument");
 
   useEffect(() => {
     if (notes && synth) {
@@ -71,8 +73,25 @@ export const InstrumentContainer: React.FC<InstrumentContainerProps> = ({
       }));
 
       new Tone.Part((time, value) => {
-        // the value is an object which contains both the note and the velocity
-        synth.triggerAttackRelease(value.note, '4n', time, value.velocity);
+        if (instruments.name === "rkung117Violin") {
+          const note = new Tone.Sampler({
+            urls: {
+              C1: "ViolinC4.mp3",
+              D2: "ViolinD4.mp3",
+              E3: "ViolinE4.mp3",
+              F4: "ViolinF4.mp3",
+              G5: "ViolinG4.mp3",
+            },
+            baseUrl: "http://localhost:3000/",
+            onload: () => {
+              note.triggerAttackRelease(value.note, "4n", time, value.velocity);
+            },
+          }).toDestination();
+          // synth.triggerAttackRelease(value.note, '10n', time, value.velocity);
+
+        } else if (instruments.name === "Piano") {
+          synth.triggerAttackRelease(value.note, "4n", time, value.velocity);
+        }
         if (value.idx === eachNote.length - 1) {
           dispatch(new DispatchAction('STOP_SONG'));
         }
