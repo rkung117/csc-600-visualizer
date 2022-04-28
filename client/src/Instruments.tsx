@@ -72,7 +72,8 @@ export const InstrumentContainer: React.FC<InstrumentContainerProps> = ({
         velocity: 1,
       }));
 
-      new Tone.Part((time, value) => {        if (instruments.name === "Violin") {
+      new Tone.Part((time, value) => {        
+        if (instruments.name === "Violin") {
           const note = new Tone.Sampler({
             urls: {
               C1: "A3.mp3",

@@ -6,19 +6,15 @@ import React from 'react';
 
 // project imports
 import { Instrument, InstrumentProps } from '../Instruments';
+import C4pic from '../img/C4.png';
+import D4pic from '../img/D4.png'; 
+import E4pic from '../img/E4.png'; 
+import F4pic from '../img/F4.png'; 
+import G4pic from '../img/G4.png'; 
 
 /** ------------------------------------------------------------------------ **
  * Contains implementation of components for Piano.
  ** ------------------------------------------------------------------------ */
-
-interface PianoKeyProps {
-  note: string; // C, Db, D, Eb, E, F, Gb, G, Ab, A, Bb, B
-  duration?: string;
-  synth?: Tone.Synth; // Contains library code for making sound
-  minor?: boolean; // True if minor key, false if major key
-  octave: number;
-  index: number; // octave + index together give a location for the piano key
-}
 
 function Violin(): JSX.Element {
     const note = new Tone.Sampler({
@@ -33,70 +29,48 @@ function Violin(): JSX.Element {
     }).toDestination();
   return (
       <div>
-        <div className ="xylophone-container" style={{marginLeft: "6rem" }}>
+        <div className ="violin-container" style={{marginLeft: "6rem" }}>
           <img
-             className="C1red"
+             className="C4pic"
              onMouseDown={ () => {
-               note.triggerAttackRelease("C1", "10n");
+               note.triggerAttackRelease("C1", "3n");
              }}
-             src={C1red}
+             src={C4pic}
              alt="red"
         />
         <img
-             className="Dorange"
+             className="D4pic"
              onMouseDown={ () => {
-               note.triggerAttackRelease("D2", "10n");
+               note.triggerAttackRelease("B3", "10n");
              }}
-             src={Dorange}
+             src={D4pic}
              alt="orange"
         />
         <img
-             className="Eyellow"
+             className="E4pic"
              onMouseDown={ () => {
-               note.triggerAttackRelease("E3", "10n");
+               note.triggerAttackRelease("G6", "10n");
              }}
-             src={Eyellow}
+             src={E4pic}
              alt="yellow"
         />
         <img
-             className="Fgreen"
+             className="F4pic"
              onMouseDown={ () => {
-               note.triggerAttackRelease("F5", "10n");
+               note.triggerAttackRelease("C7", "10n");
              }}
-             src={Fgreen}
+             src={F4pic}
              alt="green"
         />
+
+        {/* why does only specific notes work (A6, B6, G6, C7, G7) */}
         <img
-             className="Gbluegreen"
+             className="G4pic"
              onMouseDown={ () => {
-               note.triggerAttackRelease("G5", "10n");
+               note.triggerAttackRelease("G7", "10n");
              }}
-             src={Gbluegreen}
+             src={G4pic}
              alt="bluegreen"
-        />
-        <img
-             className="Alightblue"
-             onMouseDown={ () => {
-               note.triggerAttackRelease("A6", "10n");
-             }}
-             src={Alightblue}
-             alt="lightblue"
-        />
-        <img
-             className="Bblue"
-             onMouseDown={ () => {
-               note.triggerAttackRelease("B7", "10n");
-             }}
-             src={Bblue}
-             alt="blue"
-        />
-        <img
-             className="C2purple"
-             onMouseDown={ () => {
-               note.triggerAttackRelease("C2", "10n");
-             }}
-             src={C2purple}
-             alt="purple"
         />
         </div>
       </div>

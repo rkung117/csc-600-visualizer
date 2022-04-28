@@ -3,7 +3,7 @@ import { List, Map } from 'immutable';
 
 // project dependencies
 import { PianoInstrument } from './instruments/Piano';
-import { ViolinInstrument } from './instruments/rkung117-Violin';
+import { ViolinInstrument } from './instruments/Violin';
 import { WaveformVisualizer } from './visualizers/Waveform';
 
 
