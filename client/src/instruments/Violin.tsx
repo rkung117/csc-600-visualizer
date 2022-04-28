@@ -1,16 +1,19 @@
 // 3rd party library imports
 import * as Tone from 'tone';
+//import classNames from 'classnames';
+//import { List, Range } from 'immutable';
+//import React from 'react';
 
 // project imports
 import { Instrument } from '../Instruments';
-import ViolinC4Image from "../img/ViolinC4.jpg";
-import ViolinD4Image from "../img/ViolinD4.jpg";
-import ViolinE4Image from "../img/ViolinE4.jpg";
-import ViolinF4Image from "../img/ViolinF4.jpg";
-import ViolinG4Image from "../img/ViolinG4.jpg";
+import ViolinC4Image from "../img/ViolinC4.png";
+import ViolinD4Image from "../img/ViolinD4.png";
+import ViolinE4Image from "../img/ViolinE4.png";
+import ViolinF4Image from "../img/ViolinF4.png";
+import ViolinG4Image from "../img/ViolinG4.png";
 
 /** ------------------------------------------------------------------------ **
- * Contains implementation of components for Violin.
+ * Contains implementation of components for Piano.
  ** ------------------------------------------------------------------------ */
 
 function Violin(): JSX.Element {
@@ -24,13 +27,14 @@ function Violin(): JSX.Element {
     },
     baseUrl: "http://localhost:3000/"
   }).toDestination();
-return (
+  
+  return (
     <div>
       <div className ="violin-container" style={{marginLeft: "6rem" }}>
-      <img
+        <img
            className="ViolinC4"
            onMouseDown={ () => {
-             note.triggerAttackRelease("C1", "10n");
+             note.triggerAttackRelease("C1", "10n");  
            }}
            src={ViolinC4Image}
            alt="red"
@@ -38,7 +42,7 @@ return (
       <img
            className="ViolinD4"
            onMouseDown={ () => {
-             note.triggerAttackRelease("D2", "10n");
+             note.triggerAttackRelease("D2", "10n");  
            }}
            src={ViolinD4Image}
            alt="orange"
@@ -46,7 +50,7 @@ return (
       <img
            className="ViolinE4"
            onMouseDown={ () => {
-             note.triggerAttackRelease("E3", "10n");
+             note.triggerAttackRelease("E3", "10n");  
            }}
            src={ViolinE4Image}
            alt="yellow"
@@ -54,7 +58,7 @@ return (
       <img
            className="ViolinF4"
            onMouseDown={ () => {
-             note.triggerAttackRelease("F4", "10n");
+             note.triggerAttackRelease("F4", "10n");  
            }}
            src={ViolinF4Image}
            alt="green"
@@ -62,10 +66,11 @@ return (
       <img
            className="ViolinG4"
            onMouseDown={ () => {
-             note.triggerAttackRelease("G5", "10n");
+             note.triggerAttackRelease("G5", "10n");  
            }}
            src={ViolinG4Image}
            alt="bluegreen"
+     
       />
       </div>
     </div>
