@@ -19,11 +19,11 @@ import G4pic from '../img/G4.png';
 function Violin(): JSX.Element {
     const note = new Tone.Sampler({
       urls: {
-        C1: "A3.mp3",
-        D2: "B3.mp3",
-        E3: "C3.mp3",
-        F4: "C4.mp3",
-        G5: "C7.mp3",
+        C1: "Violin_C4.mp3",
+        D2: "Violin_D4.mp3",
+        E3: "Violin_E4.mp3",
+        F4: "Violin_F4.mp3",
+        G5: "Violin_G4.mp3",
       },
       baseUrl: "http://localhost:3000/"
     }).toDestination();
@@ -33,7 +33,8 @@ function Violin(): JSX.Element {
           <img
              className="C4pic"
              onMouseDown={ () => {
-               note.triggerAttackRelease("C1", "3n");
+               // note.triggerAttack("note", "time", velocity); velocity = volume for example velocity = 0.5 means half volume
+               note.triggerAttack("C1", "+0", 2);
              }}
              src={C4pic}
              alt="red"
@@ -41,7 +42,7 @@ function Violin(): JSX.Element {
         <img
              className="D4pic"
              onMouseDown={ () => {
-               note.triggerAttackRelease("B3", "10n");
+               note.triggerAttack("D2", "+0", 2);
              }}
              src={D4pic}
              alt="orange"
@@ -49,7 +50,7 @@ function Violin(): JSX.Element {
         <img
              className="E4pic"
              onMouseDown={ () => {
-               note.triggerAttackRelease("G6", "10n");
+               note.triggerAttack("E3", "+0", 2);
              }}
              src={E4pic}
              alt="yellow"
@@ -57,17 +58,16 @@ function Violin(): JSX.Element {
         <img
              className="F4pic"
              onMouseDown={ () => {
-               note.triggerAttackRelease("C7", "10n");
+               note.triggerAttack("F4", "+0", 2);
              }}
              src={F4pic}
              alt="green"
         />
 
-        {/* why does only specific notes work (A6, B6, G6, C7, G7) */}
         <img
              className="G4pic"
              onMouseDown={ () => {
-               note.triggerAttackRelease("G7", "10n");
+               note.triggerAttack("G5", "+0", 2);
              }}
              src={G4pic}
              alt="bluegreen"
