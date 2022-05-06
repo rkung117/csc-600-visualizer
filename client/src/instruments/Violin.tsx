@@ -34,7 +34,10 @@ function Violin(): JSX.Element {
              className="C4pic"
              onMouseDown={ () => {
                // note.triggerAttack("note", "time", velocity); velocity = volume for example velocity = 0.5 means half volume
-               note.triggerAttack("C1", "+0", 2);
+               // note.triggerAttack("C1", "+0", 2);
+               note.triggerAttack("C1");
+               note.triggerRelease('+0.1');
+               
              }}
              src={C4pic}
              alt="red"
@@ -42,7 +45,9 @@ function Violin(): JSX.Element {
         <img
              className="D4pic"
              onMouseDown={ () => {
-               note.triggerAttack("D2", "+0", 2);
+              // note.triggerAttack("D2", "+0", 2);
+              note.triggerAttack("D2");
+              note.triggerRelease('+0.1');
              }}
              src={D4pic}
              alt="orange"
@@ -50,7 +55,9 @@ function Violin(): JSX.Element {
         <img
              className="E4pic"
              onMouseDown={ () => {
-               note.triggerAttack("E3", "+0", 2);
+              // note.triggerAttack("E3", "+0", 2);
+              note.triggerAttack("E3");
+              note.triggerRelease('+0.1');
              }}
              src={E4pic}
              alt="yellow"
@@ -58,7 +65,9 @@ function Violin(): JSX.Element {
         <img
              className="F4pic"
              onMouseDown={ () => {
-               note.triggerAttack("F4", "+0", 2);
+              // note.triggerAttack("F4", "+0", 2);
+              note.triggerAttack("F4");
+              note.triggerRelease('+0.1');
              }}
              src={F4pic}
              alt="green"
@@ -67,7 +76,9 @@ function Violin(): JSX.Element {
         <img
              className="G4pic"
              onMouseDown={ () => {
-               note.triggerAttack("G5", "+0", 2);
+              // note.triggerAttack("G5", "+0", 2);
+              note.triggerAttack("G5");
+              note.triggerRelease('+0.1');
              }}
              src={G4pic}
              alt="bluegreen"
