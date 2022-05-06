@@ -84,7 +84,8 @@ export const InstrumentContainer: React.FC<InstrumentContainerProps> = ({
             },
             baseUrl: "http://localhost:3000/",
             onload: () => {
-              note.triggerAttackRelease(value.note, "4n", time, value.velocity);
+              // note.triggerAttackRelease(value.note, "4n", time, value.velocity);
+              note.triggerAttack(value.note, "+0", 2);
             },
           }).toDestination();
           // synth.triggerAttackRelease(value.note, '10n', time, value.velocity);
