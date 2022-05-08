@@ -59,6 +59,7 @@ export const InstrumentContainer: React.FC<InstrumentContainerProps> = ({
   );
 
   const notes = state.get('notes');
+  const instruments = state.get("instrument");
 
   useEffect(() => {
     if (notes && synth) {
@@ -71,10 +72,31 @@ export const InstrumentContainer: React.FC<InstrumentContainerProps> = ({
       }));
 
       new Tone.Part((time, value) => {
-        // the value is an object which contains both the note and the velocity
-        synth.triggerAttackRelease(value.note, '4n', time, value.velocity);
-        if (value.idx === eachNote.length - 1) {
-          dispatch(new DispatchAction('STOP_SONG'));
+        
+        if (instruments.name === "Xylophone") {
+          const note = new Tone.Sampler({
+            urls: {
+              C1: "C1.mp3",
+              D2: "D.mp3",
+              E3: "E.mp3",
+              F4: "F.mp3",
+              G5: "G.mp3",
+              A6: "A.wav",
+              B7: "B.mp3",
+              C2: "C2.mp3",
+            },
+            baseUrl: "http://localhost:3000/",
+            onload: () => {
+              note.triggerAttackRelease(value.note, "4n", time, value.velocity);
+            },
+          }).toDestination();
+          // synth.triggerAttackRelease(value.note, '10n', time, value.velocity);
+        
+        } else if (instruments.name === "Piano") {
+          synth.triggerAttackRelease(value.note, "4n", time, value.velocity);
+        
+        }if (value.idx === eachNote.length - 1) {
+          dispatch(new DispatchAction("STOP_SONG"));
         }
       }, noteObjs).start(0);
 
@@ -86,6 +108,7 @@ export const InstrumentContainer: React.FC<InstrumentContainerProps> = ({
     }
 
     return () => {};
+    // eslint-disable-next-line
   }, [notes, synth, dispatch]);
 
   return (
