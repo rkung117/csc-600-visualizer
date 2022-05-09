@@ -4,8 +4,8 @@ import { List, Map } from 'immutable';
 // project dependencies
 import { PianoInstrument } from './instruments/Piano';
 import { WaveformVisualizer } from './visualizers/Waveform';
-import { XylophoneInstrument } from './instruments/Xylophone';
-import { Wave } from './visualizers/Wave';
+import { XylophoneInstrument } from './instruments/reechevarriaXylophone';
+import { Wave } from './visualizers/reechevarriaWave';
 
 
 /** ------------------------------------------------------------------------ **

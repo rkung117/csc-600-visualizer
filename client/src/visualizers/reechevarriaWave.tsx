@@ -27,17 +27,17 @@ export const Wave = new Visualizer(
 
     for (let i = 0; i < values.length; i++) {
       const amplitude = values[i] as number;
-      const x = p5.map(i, 0, values.length - 1, 0, width);
+      const x = p5.map(i, 0, values.length - 2, 0, width);
       const y = height / 2 + amplitude * height;
-      const angleX = p5.map(i, 0, x, -10 * Math.PI, 5 * Math.PI);
-     const angleY = p5.map(i, 0, y, -10* Math.PI, 5 * Math.PI);
+      const angleX = p5.map(i, 0, x, 1 * Math.PI, 3 * Math.PI);
+     const angleY = p5.map(i, 0, y, 1 * Math.PI, 3 * Math.PI);
      const angle = angleX * (x / width) + angleY * (y / height);
 
       const myAngleX =
-        width / 2 - (width / 2) * p5.cos(2 * Math.PI * amplitude + angle);
+        width / 2 - (width / 2) * p5.cos(1 * Math.PI * amplitude + angle);
       const myAngleY =
         height / 2 -
-        (height / 2) * p5.sin(1 * Math.PI * -1 * amplitude + angle);
+        (height / 2) * p5.sin(1 * Math.PI * 1 * amplitude + angle);
        
       p5.ellipse(myAngleX, myAngleY, 3); 
       p5.rotate(space); 
