@@ -77,11 +77,11 @@ export const InstrumentContainer: React.FC<InstrumentContainerProps> = ({
         if (instruments.name === "Drum") {
           const note = new Tone.Sampler({
             urls: {
-              C4: "bass1.WAV",
-              C5: "crash1.WAV",
-              C6: "hat1.WAV",
-              C7: "snare1.WAV",
-              G3: "tom1.WAV",
+              C1: "bass1.WAV",
+              D2: "crash1.WAV",
+              E3: "hat1.WAV",
+              F4: "snare1.WAV",
+              G5: "tom1.WAV",
              
             },
             baseUrl: "http://localhost:3000/",
