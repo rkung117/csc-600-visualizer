@@ -62,6 +62,8 @@ export const InstrumentContainer: React.FC<InstrumentContainerProps> = ({
   const instruments = state.get("instrument");
 
 
+
+
   useEffect(() => {
     if (notes && synth) {
       let eachNote = notes.split(' ');
@@ -74,6 +76,7 @@ export const InstrumentContainer: React.FC<InstrumentContainerProps> = ({
 
       new Tone.Part((time, value) => {
 
+
         if (instruments.name === "Drum") {
           const note = new Tone.Sampler({
             urls: {
@@ -82,7 +85,6 @@ export const InstrumentContainer: React.FC<InstrumentContainerProps> = ({
               E3: "hat1.WAV",
               F4: "snare1.WAV",
               G5: "tom1.WAV",
-             
             },
             baseUrl: "http://localhost:3000/",
             onload: () => {
@@ -90,6 +92,51 @@ export const InstrumentContainer: React.FC<InstrumentContainerProps> = ({
             },
           }).toDestination();
           // synth.triggerAttackRelease(value.note, '10n', time, value.velocity);
+
+
+        
+        }   
+        
+        if (instruments.name === "Xylophone") {
+          const note = new Tone.Sampler({
+            urls: {
+              C1: "C1.mp3",
+              D2: "D.mp3",
+              E3: "E.mp3",
+              F4: "F.mp3",
+              G5: "G.mp3",
+              A6: "A.wav",
+              B7: "B.mp3",
+              C2: "C2.mp3",
+
+            },
+            baseUrl: "http://localhost:3000/",
+            onload: () => {
+              note.triggerAttackRelease(value.note, "4n", time, value.velocity);
+            },
+          }).toDestination();
+          // synth.triggerAttackRelease(value.note, '10n', time, value.velocity);
+
+
+        
+        }             
+        if (instruments.name === "Violin") {
+          const note = new Tone.Sampler({
+            urls: {
+              C1: "A3.mp3",
+              D2: "B3.mp3",
+              E3: "C3.mp3",
+              F4: "C4.mp3",
+              G5: "C7.mp3",
+            },
+            baseUrl: "http://localhost:3000/",
+            onload: () => {
+              // note.triggerAttackRelease(value.note, "4n", time, value.velocity);
+              note.triggerAttack(value.note, "+0", 2);
+            },
+          }).toDestination();
+          // synth.triggerAttackRelease(value.note, '10n', time, value.velocity);
+
 
         } else if (instruments.name === "Piano") {
           synth.triggerAttackRelease(value.note, "4n", time, value.velocity);
@@ -106,6 +153,7 @@ export const InstrumentContainer: React.FC<InstrumentContainerProps> = ({
     }
 
     return () => {};
+    // eslint-disable-next-line
   }, [notes, synth, dispatch]);
 
   return (
