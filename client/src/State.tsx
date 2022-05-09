@@ -3,9 +3,9 @@ import { List, Map } from 'immutable';
 
 // project dependencies
 import { PianoInstrument } from './instruments/Piano';
-import { DrumInstrument } from './instruments/Drum';
+import { DrumInstrument } from './instruments/red212-drum';
 import { WaveformVisualizer } from './visualizers/Waveform';
-import { WaveformDropsVisualizer } from './visualizers/Drops';
+import { WaveformDropsVisualizer } from './visualizers/red212-visualizer';
 
 
 
