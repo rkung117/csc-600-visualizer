@@ -176,6 +176,9 @@ function SongsNav({ state, dispatch }: SideNavProps): JSX.Element {
   );
 }
 
+/** ------------------------------------- **
+ * Song
+ ** ------------------------------------- */
 let selectedSongId = 0;
 
 function Songs({ state, dispatch }: SideNavProps): JSX.Element {
