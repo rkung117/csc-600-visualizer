@@ -61,6 +61,9 @@ export const InstrumentContainer: React.FC<InstrumentContainerProps> = ({
   const notes = state.get('notes');
   const instruments = state.get("instrument");
 
+
+
+
   useEffect(() => {
     if (notes && synth) {
       let eachNote = notes.split(' ');
@@ -72,6 +75,27 @@ export const InstrumentContainer: React.FC<InstrumentContainerProps> = ({
       }));
 
       new Tone.Part((time, value) => {
+
+
+        if (instruments.name === "Drum") {
+          const note = new Tone.Sampler({
+            urls: {
+              C1: "bass1.WAV",
+              D2: "crash1.WAV",
+              E3: "hat1.WAV",
+              F4: "snare1.WAV",
+              G5: "tom1.WAV",
+            },
+            baseUrl: "http://localhost:3000/",
+            onload: () => {
+              note.triggerAttackRelease(value.note, "4n", time, value.velocity);
+            },
+          }).toDestination();
+          // synth.triggerAttackRelease(value.note, '10n', time, value.velocity);
+
+
+        
+        }   
         
         if (instruments.name === "Xylophone") {
           const note = new Tone.Sampler({
@@ -84,6 +108,7 @@ export const InstrumentContainer: React.FC<InstrumentContainerProps> = ({
               A6: "A.wav",
               B7: "B.mp3",
               C2: "C2.mp3",
+
             },
             baseUrl: "http://localhost:3000/",
             onload: () => {
@@ -91,6 +116,8 @@ export const InstrumentContainer: React.FC<InstrumentContainerProps> = ({
             },
           }).toDestination();
           // synth.triggerAttackRelease(value.note, '10n', time, value.velocity);
+
+
         
         }             
         if (instruments.name === "Violin") {
@@ -110,6 +137,7 @@ export const InstrumentContainer: React.FC<InstrumentContainerProps> = ({
           }).toDestination();
           // synth.triggerAttackRelease(value.note, '10n', time, value.velocity);
 
+
         } else if (instruments.name === "Piano") {
           synth.triggerAttackRelease(value.note, "4n", time, value.velocity);
 
@@ -117,7 +145,6 @@ export const InstrumentContainer: React.FC<InstrumentContainerProps> = ({
           dispatch(new DispatchAction("STOP_SONG"));
         }
       }, noteObjs).start(0);
-
       Tone.Transport.start();
 
       return () => {
