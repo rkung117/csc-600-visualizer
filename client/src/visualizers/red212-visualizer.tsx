@@ -10,15 +10,10 @@ export const WaveformDropsVisualizer = new Visualizer(
   "Drops",
   (p5: P5, analyzer: Tone.Analyser) => {
     const width = window.innerWidth;
-    const height = window.innerHeight / 2;
-  
-
-  
+    const height = window.innerHeight / 2;  
     
     p5.background('#191970');
     p5.angleMode("degrees");
-   
-
   
     p5.stroke(600);
     //p5.noFill();
@@ -27,21 +22,14 @@ export const WaveformDropsVisualizer = new Visualizer(
     let space = 0.0;
     const values = analyzer.getValue();
     for (var t = -1; t <= 1; t += 2) {
-
-     
-      
-
       p5.beginShape();
       for (var i = 0; i <= 450; i += 10) {
         var index = Math.floor(p5.map(i, 0, 500, 0, values.length - 70));
         const amplitude = values[index] as number;
-        var r = p5.map(amplitude, -1, 1, 360, 200) / 1.5;
-        
+        var r = p5.map(amplitude, -1, 1, 360, 200) / 1.5;        
 
         const y = height / 2 + amplitude * height + r * Math.cos(i);
-        var x = r * Math.sin(i) * t;
-
-      
+        var x = r * Math.sin(i) * t;      
        
         p5.rotate(space);
         p5.vertex(y, x);
@@ -98,8 +86,7 @@ export const WaveformDropsVisualizer = new Visualizer(
         dot.forEach((d, index) => {
           if (!dot[index].edges()) {
             d.update();
-            d.show();
-           
+            d.show();           
           }
         });
       }
@@ -116,10 +103,6 @@ export const WaveformDropsVisualizer = new Visualizer(
     }
    
     let d = new Dots();
-    d.draw();
-    
-    
-
-   
+    d.draw();   
   }
 );
