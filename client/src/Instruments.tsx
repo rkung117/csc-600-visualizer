@@ -61,8 +61,6 @@ export const InstrumentContainer: React.FC<InstrumentContainerProps> = ({
   const notes = state.get('notes');
   const instruments = state.get("instrument");
 
-  const instruments = state.get("instrument");
-
   useEffect(() => {
     if (notes && synth) {
       let eachNote = notes.split(' ');

@@ -8,7 +8,6 @@ import { WaveformVisualizer } from './visualizers/Waveform';
 
 import { XylophoneInstrument } from './instruments/reechevarriaXylophone';
 import { Wave } from './visualizers/reechevarriaWave';
-=======
 import { ColorVisualizer } from './visualizers/rkung117';
 
 

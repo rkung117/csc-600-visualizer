@@ -63,7 +63,6 @@ export function SideNav({ state, dispatch }: SideNavProps): JSX.Element {
         <VisualizersNav state={state} dispatch={dispatch} />
         <Metadata state={state} dispatch={dispatch} />
         <SongsNav state={state} dispatch={dispatch} />
-        <Metadata state={state} dispatch={dispatch} />
       </div>
     </div>
   );
@@ -173,26 +172,6 @@ function SongsNav({ state, dispatch }: SideNavProps): JSX.Element {
           {song.get('songTitle')}
         </div>
       ))}
-    </Section>
-  );
-}
-let selectedSongId = 0;
-function Metadata({ state, dispatch }: SideNavProps): JSX.Element {
-  const songs: List<any> = state.get("songs", List());
-  let album = "";
-  let artist = "";
-  // eslint-disable-next-line
-  songs.map((song) => {
-    if (song.get("id") === selectedSongId) {
-      album = song.get("album");
-      artist = song.get("artist");
-    }
-  });
-
-  return (
-    <Section title="Song Details">
-      <div>{"Album: " + album}</div>
-      <div>{"Artist: " + artist}</div>
     </Section>
   );
 }
