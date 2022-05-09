@@ -59,6 +59,7 @@ export const InstrumentContainer: React.FC<InstrumentContainerProps> = ({
   );
 
   const notes = state.get('notes');
+  const instruments = state.get("instrument");
 
   const instruments = state.get("instrument");
 
@@ -72,7 +73,28 @@ export const InstrumentContainer: React.FC<InstrumentContainerProps> = ({
         velocity: 1,
       }));
 
-      new Tone.Part((time, value) => {        
+      new Tone.Part((time, value) => {
+        
+        if (instruments.name === "Xylophone") {
+          const note = new Tone.Sampler({
+            urls: {
+              C1: "C1.mp3",
+              D2: "D.mp3",
+              E3: "E.mp3",
+              F4: "F.mp3",
+              G5: "G.mp3",
+              A6: "A.wav",
+              B7: "B.mp3",
+              C2: "C2.mp3",
+            },
+            baseUrl: "http://localhost:3000/",
+            onload: () => {
+              note.triggerAttackRelease(value.note, "4n", time, value.velocity);
+            },
+          }).toDestination();
+          // synth.triggerAttackRelease(value.note, '10n', time, value.velocity);
+        
+        }             
         if (instruments.name === "Violin") {
           const note = new Tone.Sampler({
             urls: {

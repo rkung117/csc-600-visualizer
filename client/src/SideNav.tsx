@@ -1,7 +1,7 @@
 // 3rd party library imports
 import classNames from 'classnames';
 import { List } from 'immutable';
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import {
   RadioButton20,
@@ -56,11 +56,12 @@ export function SideNav({ state, dispatch }: SideNavProps): JSX.Element {
   return (
     <div className="absolute top-0 left-0 bottom-0 w5 z-1 shadow-1 bg-white flex flex-column">
       <div className="h3 fw7 f5 flex items-center pl3 bb b--light-gray">
-        Nameless App
+        CookiesAndIcecream
       </div>
       <div className="flex-auto">
         <InstrumentsNav state={state} dispatch={dispatch} />
         <VisualizersNav state={state} dispatch={dispatch} />
+        <Metadata state={state} dispatch={dispatch} />
         <SongsNav state={state} dispatch={dispatch} />
         <Metadata state={state} dispatch={dispatch} />
       </div>
@@ -172,6 +173,26 @@ function SongsNav({ state, dispatch }: SideNavProps): JSX.Element {
           {song.get('songTitle')}
         </div>
       ))}
+    </Section>
+  );
+}
+let selectedSongId = 0;
+function Metadata({ state, dispatch }: SideNavProps): JSX.Element {
+  const songs: List<any> = state.get("songs", List());
+  let album = "";
+  let artist = "";
+  // eslint-disable-next-line
+  songs.map((song) => {
+    if (song.get("id") === selectedSongId) {
+      album = song.get("album");
+      artist = song.get("artist");
+    }
+  });
+
+  return (
+    <Section title="Song Details">
+      <div>{"Album: " + album}</div>
+      <div>{"Artist: " + artist}</div>
     </Section>
   );
 }
@@ -307,3 +328,5 @@ const Section: React.FC<{ title: string }> = ({ title, children }) => {
     </div>
   );
 };
+
+
