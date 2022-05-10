@@ -35,6 +35,8 @@ type DispatchActionType =
   | 'DELETE_SOCKET'
   | 'SET_SONGS'
   | 'PLAY_SONG'
+  | 'GET_ALBUM'
+  | 'GET_ARTIST'
   | 'STOP_SONG'
   | 'SET_LOCATION';
 
@@ -81,6 +83,14 @@ export function appReducer(state: AppState, action: DispatchAction): AppState {
           .find((s: any) => s.get('id') === args.get('id'))
           .get('notes');
         return state.set('notes', notes);
+      }
+      case 'GET_ALBUM':{
+        const album = state.get('songs').get('album');
+        return state.set('album', album);
+      }
+      case 'GET_ARTIST':{
+        const artist = state.get('songs').get('artist');
+        return state.set('artist', artist);
       }
       case 'STOP_SONG': {
         return state.delete('notes');

@@ -11,7 +11,7 @@ CREATE TABLE songs (
 
 
 INSERT INTO songs (id, song_title, notes, album, artist) 
-VALUES (1, 'Ode to Joy (Dubstep Remix)', 'E4 E4 F4 G4 G4 F4 E4 D4 C4 C4 D4 E4 E4 D4 D4', 'Unknown', 'Unknown');
+VALUES (1, 'Ode to Joy (Dubstep Remix)', 'E4 E4 F4 G4 G4 F4 E4 D4 C4 C4 D4 E4 E4 D4 D4', 'Epic Classical Dubstep Remixes', 'Blue Claw Philharmonic');
 
 INSERT INTO songs (id, song_title, notes, album, artist)
 VALUES (2, 'Buttons', 'D2 D2 E3 D2 C1 D2 D2 F4 D2 G5', 'Unknown', 'Unknown');

@@ -60,9 +60,10 @@ export function SideNav({ state, dispatch }: SideNavProps): JSX.Element {
       </div>
       <div className="flex-auto">
         <InstrumentsNav state={state} dispatch={dispatch} />
-        <VisualizersNav state={state} dispatch={dispatch} />
-        <Metadata state={state} dispatch={dispatch} />
+        <VisualizersNav state={state} dispatch={dispatch} />        
         <SongsNav state={state} dispatch={dispatch} />
+        <Metadata state={state} dispatch={dispatch} />
+        {/* <Songs state={state} dispatch={dispatch} /> */}
       </div>
     </div>
   );
@@ -177,86 +178,26 @@ function SongsNav({ state, dispatch }: SideNavProps): JSX.Element {
 }
 
 /** ------------------------------------- **
- * Song
+ * Metadata
  ** ------------------------------------- */
-let selectedSongId = 0;
-
-function Songs({ state, dispatch }: SideNavProps): JSX.Element {
-  const [searchTerm, setSearchTerm] = state.get("");
-
-  const filterSongs = (songList: List<any>, searchTerm: String) => {
-    if (!searchTerm) {
-      return songList;
-    }
-
-    // eslint-disable-next-line
-    return songList.filter((song) => {
-      console.log(song);
-      const songName = song.get("title");
-      const album = song.get("album");
-      const artist = song.get("artist");
-
-      if (songName !== undefined) {
-        console.log("search term", searchTerm);
-        console.log("song name", songName);
-        console.log(songName.includes(searchTerm.toLowerCase()));
-        return (
-          songName.toLowerCase().includes(searchTerm.toLowerCase()), 
-          album.toLowerCase().includes(searchTerm.toLowerCase()) ,
-          artist.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-      }
-    });
-  };
-
-  const songs: List<any> = state.get("songs", List());
-
-  return (
-    <Section title="Playlist">
-      <input
-        type="text"
-        placeholder="Songs, album or artist"
-        onChange={(event) => setSearchTerm(event.target.value)}
-        value={searchTerm}
-        style={{ width: "12rem" }}
-      />
-      {filterSongs(songs, searchTerm).map((song) => (
-        <div
-          key={song.get("id")}
-          className="f6 pointer underline flex items-center no-underline i dim"
-          onClick={() => {
-            selectedSongId = song.get("id");
-            dispatch(new DispatchAction("PLAY_SONG", { id: song.get("id") }));
-          }}
-        >
-          <Music20 className="mr1" />
-          {song.get("title")}
-        </div>
-      ))}
-      <button
-      onClick={() => {
-            dispatch(new DispatchAction("PLAY_SONG", { id: 1 }));
-          } }>Autoplay</button>
-    </Section>
-  );
-}
 
 function Metadata({ state, dispatch }: SideNavProps): JSX.Element {
   const songs: List<any> = state.get("songs", List());
-  let album = "";
-  let artist = "";
   // eslint-disable-next-line
-  songs.map((song) => {
-    if (song.get("id") === selectedSongId) {
-      album = song.get("album");
-      artist = song.get("artist");
-    }
-  });
-
   return (
     <Section title="Song Details">
-      <div>{"Album: " + album}</div>
-      <div>{"Artist: " + artist}</div>
+      {songs.map(song => (
+        <div
+          className = "f6 pointer underline flex items-center no-underline dim"          
+          onClick={() =>
+            {dispatch(new DispatchAction('GET_ALBUM', { album: song.get('album') }))}
+          }
+        > 
+          Album: {song.get('album')}
+          <br/>
+          Artist: {song.get('artist')}
+        </div>
+      ))}  
     </Section>
   );
 }
@@ -282,7 +223,7 @@ function RadioButton({ to, text, active, onClick }: RadioButtonProps): JSX.Eleme
       <div
         className={classNames('f6 flex items-center black', { fw7: active })}
         onClick={onClick}
-      >
+      > 
         {active ? (
           <RadioButtonChecked20 className="mr1" />
         ) : (
