@@ -15,18 +15,18 @@ export const ColorVisualizer = new Visualizer(
 
     p5.background(0, 0, 0, 255);
 
-    p5.strokeWeight(dim * 0.01);
-    p5.stroke(255, 255, 255, 255);
-    p5.noFill();
-
     const values = analyzer.getValue();
     p5.beginShape();
     for (let i = 0; i < values.length; i++) {
+      // how to make color change smoother?
       const amplitude = values[i] as number;
-      const x = p5.map(i, 0, values.length - 1, 0, width);
-      const y = height / 2 + amplitude * height;
-      // Place vertex
-      p5.vertex(x, y);
+      const radius = 50 + amplitude * width/2;
+      const red = 0;
+      const green = radius;
+      const blue = i * radius/2;
+      
+      p5.fill(red,green,blue);
+      p5.circle(width / 2 , height / 2 , radius);   
     }
     p5.endShape();
   },
