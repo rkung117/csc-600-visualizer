@@ -7,7 +7,7 @@ import { Visualizer } from "../Visualizers";
 let dot: any[] = [];
 
 export const Wave = new Visualizer(
-  "Wave",
+  "reechevarria-Wave",
   (p5: P5, analyzer: Tone.Analyser) => {
     const width = window.innerWidth;
     const height = window.innerHeight / 2;

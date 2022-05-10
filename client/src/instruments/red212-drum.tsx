@@ -77,4 +77,4 @@ import tomImage from "../img/tom.png";
     );
   }
   
-  export const DrumInstrument = new Instrument ("Drum", Drum);
+  export const DrumInstrument = new Instrument ("red212-drum", Drum);

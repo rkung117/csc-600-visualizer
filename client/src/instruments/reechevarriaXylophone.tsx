@@ -106,4 +106,4 @@ function Xylophone(): JSX.Element {
   );
 }
 
-export const XylophoneInstrument = new Instrument ("Xylophone", Xylophone);
+export const XylophoneInstrument = new Instrument ("reechevarria-Xylophone", Xylophone);

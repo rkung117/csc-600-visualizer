@@ -7,7 +7,7 @@ import { Visualizer } from '../Visualizers';
 
 
 export const ColorVisualizer = new Visualizer(
-  'Color',
+  'rkung117-Visualizer',
   (p5: P5, analyzer: Tone.Analyser) => {
     const width = window.innerWidth;
     const height = window.innerHeight / 2;
@@ -20,10 +20,10 @@ export const ColorVisualizer = new Visualizer(
     for (let i = 0; i < values.length; i++) {
       // how to make color change smoother?
       const amplitude = values[i] as number;
-      const radius = 50 + amplitude * width/2;
-      const red = 0;
-      const green = radius;
-      const blue = i * radius/2;
+      const radius = 50 + amplitude * width/1.5;
+      const red = amplitude;
+      const green = radius + amplitude;
+      const blue = i * radius/3;
       
       p5.fill(red,green,blue);
       p5.circle(width / 2 , height / 2 , radius);   

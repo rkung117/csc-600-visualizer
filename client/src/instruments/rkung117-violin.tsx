@@ -88,4 +88,4 @@ function Violin(): JSX.Element {
     );
   }
 
-export const ViolinInstrument = new Instrument('Violin', Violin);
+export const ViolinInstrument = new Instrument('rkung117-Violin', Violin);
