@@ -1,5 +1,4 @@
 // 3rd party library imports
-import { CircleDash16 } from '@carbon/icons-react';
 import P5 from 'p5';
 import * as Tone from 'tone';
 
@@ -14,22 +13,20 @@ export const ColorVisualizer = new Visualizer(
     const height = window.innerHeight / 2;
     const dim = Math.min(width, height);
 
-    p5.background(0, 150, 150, 255);
-
-    p5.strokeWeight(dim * 0.01);
-    p5.stroke(255, 255, 255, 255);
-    p5.noFill();
+    p5.background(0, 0, 0, 255);
 
     const values = analyzer.getValue();
     p5.beginShape();
     for (let i = 0; i < values.length; i++) {
-      // const amplitude = values[i] as number;
-      // const x = p5.map(i, 0, values.length - 1, 0, width);
-      // const y = height / 2 + amplitude * height;
-      // // Place vertex
-      // p5.vertex(x, y);
+      // how to make color change smoother?
       const amplitude = values[i] as number;
-      p5.circle(width / 2 + amplitude * height, height / 2 + amplitude * height, 100);
+      const radius = 50 + amplitude * width/2;
+      const red = i * 2;
+      const green = i * radius;
+      const blue = radius;
+      
+      p5.fill(red,green,blue);
+      p5.circle(width / 2 , height / 2 , radius);   
     }
     p5.endShape();
   },
